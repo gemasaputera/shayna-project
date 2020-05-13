@@ -843,7 +843,7 @@ ol {
 }
 
 .hero-items .single-hero-items h1 {
-    color: #252525;
+    color: #FFF;
     font-size: 72px;
     font-weight: 700;
     margin-bottom: 6px;
@@ -1182,7 +1182,7 @@ ol {
 
 .product-item .pi-pic img {
     min-width: 100%;
-    max-height: 650px;
+    height: auto;
 }
 
 .product-item .pi-pic .sale {
@@ -1528,10 +1528,6 @@ ol {
 
 .footer-left .footer-logo {
     margin-bottom: 24px;
-}
-
-.footer-left .footer-logo img {
-    height: 30px !important;
 }
 
 .footer-left .footer-logo a {

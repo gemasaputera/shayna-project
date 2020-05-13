@@ -5,7 +5,7 @@
                 <div class="col-lg-5">
                     <div class="footer-left text-left">
                         <div class="footer-logo">
-                            <a href="#"><img src="img/logo_website_shayna_white.png" alt="" /></a>
+                            <img src="img/logo_boci_hijab-white.png" alt="" />
                         </div>
                         <ul>
                             <li>Address: Setra Duta, Bandung</li>

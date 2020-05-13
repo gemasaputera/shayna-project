@@ -68,10 +68,12 @@ export default {
       const nItem = {...item,img:item.galleries[0].photo};
       this.carts.push(nItem);
       this.saveCart();
+      this.$forceUpdate();
     },
     saveCart() {
       const parsed = JSON.stringify(this.carts);
       localStorage.setItem('tart', parsed);
+      window.location.reload();
     }
   },
   mounted() {

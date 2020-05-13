@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="pd-desc">
                                     <div v-html="itemDetail.description"></div>
-                                    <h4>IDR {{itemDetail.price}}</h4>
+                                    <h4>{{price(itemDetail)}}</h4>
                                 </div>
                                 <div class="quantity">
                                     <router-link
@@ -66,6 +66,7 @@
 
 <script>
 // @ is an alias to /src
+import currencyFormat from './../utils/currencyFormat';
 import Header from '@/components/layouts/Header.vue';
 import Footer from '@/components/layouts/Footer.vue';
 import Breadcrumb from '@/components/elements/Breadcrumb.vue';
@@ -93,6 +94,11 @@ export default {
     };
   },
   methods: {
+    price(item) {
+      return(
+        currencyFormat(item.price, 'IDR ')
+      );
+    },
     changeImage(urlImage) {
       this.defaultImage = urlImage;
     },
@@ -149,6 +155,10 @@ export default {
 </script>
 
 <style scoped>
+div.product-pic-zoom > img.product-big-img {
+  min-width: 100%;
+  height: auto;
+}
 
 .spinner {
   position: relative;

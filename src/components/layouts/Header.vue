@@ -18,7 +18,7 @@
                     <div class="col-lg-2 col-md-2">
                         <div class="logo">
                             <router-link to='/'>
-                                <img src="img/logo_website_shayna.png" alt="" />
+                                <img src="img/logo_boci_hijab-black.png" height="75" alt="" />
                             </router-link>
                         </div>
                     </div>
@@ -34,8 +34,9 @@
                                 <div class="cart-hover">
                                     <div class="select-items">
                                         <table  v-if="carts.length>0">
-                                            <tbody v-for="(item, index) in samplCarts" :key="index">
-                                                <tr>
+                                            <tbody>
+                                                <tr v-for="(item, index) in samplCarts"
+                                                  :key="index">
                                                     <td class="si-pic">
                                                         <img 
                                                             class="sm-pic"
@@ -44,7 +45,7 @@
                                                     </td>
                                                     <td class="si-text">
                                                         <div class="product-selected">
-                                                            <p>IDR {{ item.price }} x 
+                                                            <p>{{ price(item) }} x 
                                                                 {{ item.slug.length }}</p>
                                                             <h6>{{ item.name }}</h6>
                                                         </div>
@@ -66,10 +67,14 @@
                                     </div>
                                     <div class="select-total">
                                         <span>total:</span>
-                                        <h5>$120.00</h5>
+                                        <h5>{{subTotal}}</h5>
                                     </div>
                                     <div class="select-button">
-                                        <a href="#" class="primary-btn view-card">VIEW CARD</a>
+                                        <router-link 
+                                          to='/shopping-cart'
+                                          class="primary-btn view-card">
+                                          VIEW CART
+                                        </router-link>
                                         <a href="#" class="primary-btn checkout-btn">CHECK OUT</a>
                                     </div>
                                 </div>
@@ -84,6 +89,7 @@
 </template>
 
 <script>
+import currencyFormat from './../../utils/currencyFormat';
 export default {
   name: 'Header',
   props: {
@@ -95,7 +101,7 @@ export default {
       carts:[],
       samplCarts:[],
       cartTotal: 0,
-      priceTotal: 0
+      priceTotal: 0,
     };
   },
   methods: {
@@ -112,7 +118,7 @@ export default {
         // eslint-disable-next-line no-prototype-builtins
         if (seen.hasOwnProperty(entry.id)) {
           prev = seen[entry.id];
-          prev.slug.push(entry.slug);
+          prev.slug.splice(entry.slug, 1);
           return false;
         }
         if (!Array.isArray(entry.slug)) {
@@ -121,11 +127,24 @@ export default {
         seen[entry.id] = entry;
         return true;      
       });
+      this.subTotal = this.carts.reduce((a, b) => a + (b.price || 0), 0);
     },
     saveCart() {
       const parsed = JSON.stringify(this.carts);
       localStorage.setItem('tart', parsed);
+    },
+    price(item) {
+      return(
+        currencyFormat(item.price, 'IDR ')
+      );
     }
+  },
+  computed:{
+    subTotal() {
+      return(
+        currencyFormat(this.carts.reduce((a, b) => a + (b.price || 0), 0), 'IDR ')
+      );
+    },
   },
   mounted(){
     if(localStorage.getItem('tart')){
@@ -150,12 +169,6 @@ export default {
       }
       seen[entry.id] = entry;
       return true;      
-    });
-  },
-  update() {
-    this.$nextTick(() => {
-      // Okay, now that everything is destroyed, lets build it up again
-      this.cartTotal = this.carts.length;
     });
   }
 };

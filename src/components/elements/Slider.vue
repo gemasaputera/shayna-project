@@ -1,13 +1,13 @@
 <template>
     <div class="slider">
         <carousel class="hero-items" :items=1 :dots=true :autoplay=true :nav=false>
-            <div class="single-hero-items set-bg" style="background-image: url('/img/hero-1.jpg')">
+            <div class="single-hero-items set-bg" style="background-image: url('/img/hero-4.jpg')">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5">
                             <span>Bag,kids</span>
                             <h1>Black friday</h1>
-                            <p>
+                            <p class="slide">
                                 Lorem ipsum dolor sit amet,
                                 consectetur adipisicing elit,
                                 sed do eiusmod tempor incididunt ut labore et
@@ -18,13 +18,13 @@
                     </div>
                 </div>
             </div>
-            <div class="single-hero-items set-bg" style="background-image: url('/img/hero-2.jpg')">
+            <div class="single-hero-items set-bg" style="background-image: url('/img/hero-5.jpg')">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5">
                             <span>Bag,kids</span>
                             <h1>Black friday</h1>
-                            <p>
+                            <p class="slide">
                                 Lorem ipsum dolor sit amet,
                                 consectetur adipisicing elit,
                                 sed do eiusmod tempor incididunt ut labore
@@ -35,13 +35,13 @@
                     </div>
                 </div>
             </div>
-            <div class="single-hero-items set-bg" style="background-image: url('/img/hero-3.jpg')">
+            <div class="single-hero-items set-bg" style="background-image: url('/img/hero-6.jpg')">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5">
                             <span>Bag,kids</span>
                             <h1>Black friday</h1>
-                            <p>
+                            <p class="slide">
                                 Lorem ipsum dolor sit amet,
                                 consectetur adipisicing elit,
                                 sed do eiusmod tempor incididunt ut 
@@ -66,6 +66,9 @@ export default {
 };
 </script>
 
-<style>
+<style scope>
+p.slide {
+    color: #fff;
+}
 
 </style>
