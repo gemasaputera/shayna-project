@@ -242,7 +242,7 @@ export default {
       };
       this.setLoading(true);
       axios
-        .post("http://shayna.gionshop.xyz/api/checkout", payload)
+        .post("https://shayna.gionshop.xyz/api/checkout", payload)
         .then(res=>{
           this.products = res.data.data.data;
           this.setLoading(false);

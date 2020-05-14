@@ -139,7 +139,7 @@ export default {
     const idProduct= this.$route.params.id;
     this.setLoading(true);
     axios
-      .get("http://shayna.gionshop.xyz/api/products",{
+      .get("https://shayna.gionshop.xyz/api/products",{
         params: {
           id: idProduct
         }

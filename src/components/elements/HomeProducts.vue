@@ -86,7 +86,7 @@ export default {
     }
     this.setLoading(true);
     axios
-      .get("http://shayna.gionshop.xyz/api/products")
+      .get("https://shayna.gionshop.xyz/api/products")
       .then(res=>{
         this.products = res.data.data.data;
         this.setLoading(false);
